@@ -161,10 +161,10 @@ public class TaskUI {
      * @see #inputChangeInformation()
      * @see #inputDeleteInformation()
      */
-     public void selectSubMenu() {
+    public void selectSubMenu() {
         boolean flg = true;
         while (flg) {
-            try{
+            try {
                 System.out.println("以下1~2から好きな選択肢を選んでください。");
                 System.out.println("1. タスクのステータス変更, 2. メインメニューに戻る");
                 System.out.print("選択肢：");
@@ -172,6 +172,7 @@ public class TaskUI {
                 System.out.println();
                 switch (input) {
                     case "1":
+                        // タスクステータスを変更
                         inputChangeInformation();
                         break;
                     case "2":
@@ -180,11 +181,11 @@ public class TaskUI {
                     default:
                         break;
                 }
-            }catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-     }
+    }
 
     /**
      * ユーザーからのタスクステータス変更情報を受け取り、タスクのステータスを変更します。
@@ -213,7 +214,7 @@ public class TaskUI {
                     System.out.println();
                     continue;
                 }
-                if(!(code ==1 || code ==2)){
+                if (!(code == 1 || code == 2)) {
                     System.out.println("ステータスは1・2の中から選択してください");
                     System.out.println();
                     continue;
@@ -226,7 +227,6 @@ public class TaskUI {
                 System.out.println(e.getMessage());
             }
         }
-
     }
 
     /**

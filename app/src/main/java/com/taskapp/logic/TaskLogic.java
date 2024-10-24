@@ -107,13 +107,13 @@ public class TaskLogic {
      * @param loginUser ログインユーザー
      * @throws AppException タスクコードが存在しない、またはステータスが前のステータスより1つ先でない場合にスローされます
      */
-     public void changeStatus(int code, int status,User loginUser) throws AppException {
+    public void changeStatus(int code, int status, User loginUser) throws AppException {
         Task task = taskDataAccess.findByCode(code);
-        if(task != null){
+        if (task != null) {
             Log log = new Log(code, loginUser.getCode(), status, LocalDate.now());
             switch (task.getStatus()) {
                 case 0:
-                    if(status != 1){
+                    if (status != 1) {
                         throw new AppException("ステータスは、前のステータスより1つ先のもののみを選択してください");
                     }
                     task.setStatus(status);
@@ -121,7 +121,7 @@ public class TaskLogic {
                     logDataAccess.save(log);
                     break;
                 case 1:
-                    if(status != 2){
+                    if (status != 2) {
                         throw new AppException("ステータスは、前のステータスより1つ先のもののみを選択してください");
                     }
                     task.setStatus(status);
@@ -130,13 +130,13 @@ public class TaskLogic {
                     break;
                 case 2:
                     throw new AppException("ステータスは、前のステータスより1つ先のもののみを選択してください");
-                    default:
+                default:
                     break;
             }
-        }else{
+        } else {
             throw new AppException("存在するタスクコードを入力してください");
         }
-     }
+    }
 
     /**
      * タスクを削除します。
